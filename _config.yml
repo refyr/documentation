@@ -9,3 +9,4 @@ include:
   - api-gateway/api-gateway.md
 github:
   - repository_url: https://github.com/refyr
+  - repository_name: Refyr

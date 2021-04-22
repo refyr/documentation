@@ -1,5 +1,3 @@
-## Welcome to refyr documentation page
+## Sections
 
-### Sections
-
-- **[API Gateway](api-gateway/api-gateway.md)**
+### [API Gateway](api-gateway/api-gateway.md)
