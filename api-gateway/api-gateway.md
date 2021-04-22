@@ -11,7 +11,7 @@ The API gateway handles some requests by simply routing them to the appropriate 
     <img src="images/api-gateway-diagram.svg">
 </p>
 
-### Features
+#### Features
 
 Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redirect or route requests (layer 7 routing, usually HTTP requests) to the endpoints of the internal microservices. The gateway provides a single endpoint or URL for the client apps and then internally maps the requests to a group of internal microservices.
 
@@ -46,13 +46,11 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - **28.7k stars**
 - **[Lots of plugins available](https://docs.konghq.com/hub/)**
 
-### Features
+#### Features
 
 <p align="center" style="margin: 40px auto"> 
     <img style="width:90%; max-width:700px" src="images/kong-arch.jpg">
 </p>
-
-<div style="padding-left:20px">
 
 - **Cloud-Native**: Platform agnostic, Kong can run on any platform - from bare
   metal to containers - and it can run on every cloud natively.
@@ -99,15 +97,11 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - **Plugins**: Extendable architecture for adding functionality to Kong and
   APIs.
 
-</div>
-
 <p align="center" style="margin: 40px auto"> 
     <img style="width:90%; max-width:700px" src="images/gateway-stack-kong.png">
 </p>
 
-- **Distributions**
-
-<div style="padding-left:20px">
+### Distributions
 
 - [Kubernetes Ingress Controller for Kong](https://github.com/Kong/kubernetes-ingress-controller):
   Use Kong for Kubernetes Ingress.
@@ -125,8 +119,6 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
   Heroku in one click.
 - [Master Builds](https://hub.docker.com/r/kong/kong/tags): Docker images for each commit in the `master` branch.
 
-</div>
-
 ---
 
 <p style="margin: 50px 0"> 
@@ -139,9 +131,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - **10.8k stars**
 - **Backed by Netflix**
 
-### Features
-
-<div style="padding-left:20px">
+#### Features
 
 - **Authentication and Security**: Identifying authentication requirements for each resource and rejecting requests that do not satisfy them.
 - **Insights and Monitoring**: Tracking meaningful data and statistics at the edge in order to give us an accurate view of production.
@@ -150,8 +140,6 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - **Load Shedding**: Allocating capacity for each type of request and dropping requests that go over the limit.
 - **Static Response handling**: Building some responses directly at the edge instead of forwarding them to an internal cluster
 - **Multiregion Resiliency**: Routing requests across AWS regions in order to diversify our ELB usage and move our edge closer to our members
-
-</div>
 
 <p align="center" > 
     <img style="width:90%; max-width:1000px" src="images/zuul.png">
@@ -169,9 +157,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - **6.2k stars**
 - **[Some plugins available](https://tyk.io/features/extend-tyk/)**
 
-### Features
-
-<div style="padding-left:20px">
+#### Features
 
 - **Industry Standard Authentication**: OIDC, JWT, bearer Tokens, Basic Auth, Client Certificates and more.
 - **Open API Standards**: Import your Swagger and OAS2/3 documents to scaffold APIs in Tyk.
@@ -189,15 +175,11 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - **Hitless reloads** - Tyk configurations can be altered dynamically and the service restarted without affecting any active request
 - **Kubernetes native declarative API:** using Open Source [Tyk Operator](https://github.com/TykTechnologies/tyk-operator) (more info in OSS section)
 
-</div>
-
 <p align="center" > 
     <img style="width:90%; max-width:1000px" src="images/tyk.png">
 </p>
 
-- **Distributions**
-
-<div style="padding-left:20px">
+### Distributions
 
 - [Docker](https://tyk.io/docs/tyk-oss/ce-docker/) (Recommended method)
 - [ Kubernetes-Native ](https://github.com/TykTechnologies/tyk-oss-k8s-deployment)
@@ -206,8 +188,6 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - [Red Hat](https://tyk.io/docs/tyk-oss/ce-redhat/)
 - [Ubuntu](https://tyk.io/docs/tyk-oss/ce-ubuntu/)
 - [CentOS](https://tyk.io/docs/tyk-oss/ce-centos/)
-
-</div>
 
 ---
 
@@ -226,9 +206,7 @@ You can use Apache APISIX to handle traditional north-south traffic, as well as 
     <img style="width:90%; max-width:800px" src="images/apisix.png">
 </p>
 
-## Features
-
-<div style="padding-left:20px">
+### Features
 
 You can use Apache APISIX as a traffic entrance to process all business data, including dynamic routing, dynamic upstream, dynamic certificates,
 A/B testing, canary release, blue-green deployment, limit rate, defense against malicious attacks, metrics, monitoring alarms, service observability, service governance, etc.
@@ -314,16 +292,10 @@ A/B testing, canary release, blue-green deployment, limit rate, defense against 
   - Custom load balancing algorithms: You can use custom load balancing algorithms during the `balancer` phase.
   - Custom routing: Support users to implement routing algorithms themselves.
 
-</div>
-
-- **Distributions**
-
-<div style="padding-left:20px">
+### Distributions
 
 - [Docker](https://hub.docker.com/r/apache/apisix)
 - [Linux](https://github.com/apache/apisix#configure-and-installation/)
-
-</div>
 
 ---
 
@@ -344,9 +316,7 @@ KrakenD needs no programming as it offers a declarative way to create the endpoi
     <img style="max-height:500px" src="images/krakend-gateway.png">
 </p>
 
-## Features
-
-<div style="padding-left:20px">
+### Features
 
 Some of the features you get with KrakenD are:
 
@@ -390,22 +360,16 @@ Some of the features you get with KrakenD are:
   - Cross-site scripting (XSS) protection
   - Cross-origin resource sharing (CORS)
 
-</div>
-
 <p align="center" > 
     <img style="width:90%; max-width:1000px" src="images/krakend.png">
 </p>
 
-- **Distributions**
-
-<div style="padding-left:20px">
+### Distributions
 
 - [Docker](https://hub.docker.com/r/devopsfaith/krakend/)
 - [AWS EC2](https://aws.amazon.com/marketplace/seller-profile?id=0b4c8ac8-584c-406c-9b8d-4c8e3c34b81f)
 - [Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/brutale.krakend-ce?tab=Overview)
 - [Linux/OS X](https://www.krakend.io/download/)
-
-</div>
 
 ## Comparaison
 
