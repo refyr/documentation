@@ -1,6 +1,11 @@
-theme: jekyll-theme-architect
+theme: jekyll-theme-cayman
+title: Refyr Documentation
+description: Documentation about the different parts of Refyr, the problems encountered and the solutions found
+show_downloads: false
 relative_links:
   enabled: true
   collections: true
 include:
   - api-gateway/api-gateway.md
+github:
+  - repository_url: https://github.com/refyr
