@@ -1,4 +1,4 @@
-#API Gateway (Backends for Frontends)
+# API Gateway (Backends for Frontends)
 
 ### Defintion and generalities
 
