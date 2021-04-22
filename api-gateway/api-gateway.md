@@ -8,7 +8,7 @@ It might have other responsibilities such as authentication, monitoring, load ba
 The API gateway handles some requests by simply routing them to the appropriate backend service, and handles others by invoking multiple backend services and aggregating the results.
 
 <p align="center" style="margin: 50px auto"> 
-    <img src="/images/api-gateway-diagram.svg">
+    <img src="images/api-gateway-diagram.svg">
 </p>
 
 ### Features
@@ -16,7 +16,7 @@ The API gateway handles some requests by simply routing them to the appropriate 
 Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redirect or route requests (layer 7 routing, usually HTTP requests) to the endpoints of the internal microservices. The gateway provides a single endpoint or URL for the client apps and then internally maps the requests to a group of internal microservices.
 
 <p align="center" style="margin: 50px auto"> 
-    <img style="max-height: 400px" src="/images/azure-gateway.png">
+    <img style="max-height: 400px" src="images/azure-gateway.png">
 </p>
 
 ### Benefits
@@ -37,7 +37,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 # Popular Implementations
 
 <p> 
-    <img style="max-height:150px" src="/images/kong-logo.png">
+    <img style="max-height:150px" src="images/kong-logo.png">
 </p>
 
 **[Kong](https://github.com/Kong/kong)** is a cloud-native, fast, scalable, and distributed Microservice Abstraction Layer (also known as an API Gateway or API Middleware).
@@ -49,7 +49,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 ### Features
 
 <p align="center" style="margin: 40px auto"> 
-    <img style="width:90%; max-width:700px" src="/images/kong-arch.jpg">
+    <img style="width:90%; max-width:700px" src="images/kong-arch.jpg">
 </p>
 
 <div style="padding-left:20px">
@@ -102,7 +102,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 </div>
 
 <p align="center" style="margin: 40px auto"> 
-    <img style="width:90%; max-width:700px" src="/images/gateway-stack-kong.png">
+    <img style="width:90%; max-width:700px" src="images/gateway-stack-kong.png">
 </p>
 
 - **Distributions**
@@ -130,7 +130,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 ---
 
 <p style="margin: 50px 0"> 
-    <img style="max-height:200px" src="/images/zuul-logo.png">
+    <img style="max-height:200px" src="images/zuul-logo.png">
 </p>
 
 **[Zuul](https://github.com/Netflix/zuul)** is an L7 application gateway that provides capabilities for dynamic routing, monitoring, resiliency, security, and more.
@@ -154,13 +154,13 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 </div>
 
 <p align="center" > 
-    <img style="width:90%; max-width:1000px" src="/images/zuul.png">
+    <img style="width:90%; max-width:1000px" src="images/zuul.png">
 </p>
 
 ---
 
 <p> 
-    <img style="max-height:150px" src="/images/tyk-logo.png">
+    <img style="max-height:150px" src="images/tyk-logo.png">
 </p>
 
 **[Tyk](https://github.com/TykTechnologies/tyk)** is an open Source API Gateway written in Go, supporting REST, GraphQL, TCP and gRPC protocols.
@@ -192,7 +192,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 </div>
 
 <p align="center" > 
-    <img style="width:90%; max-width:1000px" src="/images/tyk.png">
+    <img style="width:90%; max-width:1000px" src="images/tyk.png">
 </p>
 
 - **Distributions**
@@ -212,7 +212,7 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 ---
 
 <p> 
-    <img style="max-height:250px; max-width: 250px" src="/images/apisix-logo.svg">
+    <img style="max-height:250px; max-width: 250px" src="images/apisix-logo.svg">
 </p>
 
 [Apache Apisix](https://github.com/apache/apisix) is a dynamic, real-time, high-performance API gateway.
@@ -223,7 +223,7 @@ You can use Apache APISIX to handle traditional north-south traffic, as well as 
 - **4.8k stars**
 
 <p align="center" > 
-    <img style="width:90%; max-width:800px" src="/images/apisix.png">
+    <img style="width:90%; max-width:800px" src="images/apisix.png">
 </p>
 
 ## Features
@@ -328,7 +328,7 @@ A/B testing, canary release, blue-green deployment, limit rate, defense against 
 ---
 
 <p> 
-    <img style="max-height:70px" src="/images/krakend-logo.png">
+    <img style="max-height:70px" src="images/krakend-logo.png">
 </p>
 
 **[KrakenD](https://github.com/devopsfaith/krakend)** is an open framework to assemble ultra performance API Gateways with middlewares; core service of the KrakenD API Gateway.
@@ -341,7 +341,7 @@ Its core functionality is to create an API that acts as an aggregator of many mi
 KrakenD needs no programming as it offers a declarative way to create the endpoints. It is well structured and layered and open to extending its functionality using plug-and-play middleware developed by the community or in-house.
 
 <p align="center" > 
-    <img style="max-height:500px" src="/images/krakend-gateway.png">
+    <img style="max-height:500px" src="images/krakend-gateway.png">
 </p>
 
 ## Features
@@ -393,7 +393,7 @@ Some of the features you get with KrakenD are:
 </div>
 
 <p align="center" > 
-    <img style="width:90%; max-width:1000px" src="/images/krakend.png">
+    <img style="width:90%; max-width:1000px" src="images/krakend.png">
 </p>
 
 - **Distributions**
