@@ -1,40 +1,55 @@
 # API Gateway (Backends for Frontends)
 
-### Defintion and generalities
+# Introduction
 
-An API Gateway is a service that provides a single-entry point for certain groups of microservices.
+### What is an API Gateway
+
+Deployed at the edge of your infrastructure, the API Gateway is the single entry point that routes client API requests to a certain group of microservices.
 The API Gateway encapsulates the internal system architecture and provides an API that is tailored to each client, independent of the number and composition of internal microservices.
 It might have other responsibilities such as authentication, monitoring, load balancing, caching, request shaping and management, and static response handling.
-The API gateway handles some requests by simply routing them to the appropriate backend service, and handles others by invoking multiple backend services and aggregating the results.
+The API gateway offers a reverse proxy to handle requests by routing them to the appropriate endpoints of the internal microservices service. It might also handle some requests by invoking multiple backend services and aggregating the results.
 
 <p align="center" style="margin: 50px auto"> 
-    <img src="../assets/images/api-gateway/api-gateway-diagram.svg">
-</p>
-
-#### Features
-
-Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redirect or route requests (layer 7 routing, usually HTTP requests) to the endpoints of the internal microservices. The gateway provides a single endpoint or URL for the client apps and then internally maps the requests to a group of internal microservices.
-
-<p align="center" style="margin: 50px auto"> 
-    <img style="max-height: 400px" src="../assets/images/api-gateway/azure-gateway.png">
+    <img style="max-height: 500px"  src="../assets/images/api-gateway/API_Gateways_Diagram.svg">
 </p>
 
 ### Benefits
 
 - **Ease of Development**: An API Gateway abstracts knowledge about your sub-domains on the back-end and client-side developers can develop against a single entry point. It makes it easy for them to consume the REST APIs to implement front-end apps.
 - **Faster Communication Between Front-end and Back-end:** Front-end applications can now communicate with a single point of contact (API gateway). This improves the speed of communication between the client and servers. This speed gain proves more valuable for cross-continental communications (eg. EU-based servers and asia-based clients) as they reduce the latency required for performing communication as compared to having several point of contacts.
-- **Coupling:** Without the API Gateway pattern, the client apps are coupled to the internal microservices. The client apps need to know how the multiple areas of the application are decomposed in microservices. When evolving and refactoring the internal microservices, those actions impact maintenance because they cause breaking changes to the client apps due to the direct reference to the internal microservices from the client apps. Client apps need to be updated frequently, making the solution harder to evolve.
-- **Too Many Round Trips:** A single page/screen in the client app might require several calls to multiple services. That approach can result in multiple network round trips between the client and the server, adding significant latency. Aggregation handled in an intermediate level could improve the performance and user experience for the client app.
+- **Coupling:** Without the API Gateway pattern, the client apps are coupled to the internal microservices. The client apps need to know how the multiple areas of the application are decomposed in microservices. When evolving and refactoring the internal microservices, those actions impact maintenance because they cause breaking changes to the client apps due to the direct reference to the internal microservices from the client apps. Client apps need to be updated frequently, making the solution harder to evolve. The Gateway helps in decoupling the microservices from the Client apps.
+- **Too Many Round Trips:** A single page/screen in the client app might require several calls to multiple services. That approach can result in multiple network round trips between the client and the server, adding significant latency. Aggregation handled in an intermediate level could improve the performance and user experience for the client app, by reducing the number of request/response roundtrips.
 - **Security Issues:** Without a gateway, all the microservices must be exposed to the "external world", making the attack surface larger than if you hide internal microservices that aren't directly used by the client apps. The smaller the attack surface is, the more secure your application can be.
-- **Cross-cutting Concerns:** Each publicly published microservice must handle concerns such as authorization and SSL. In many situations, those concerns could be handled in a single tier so the internal microservices are simplified and the solutions are cheaper and more reliable.
+- **Resiliency:** The API Gateway is the front-face of all Backend services, any error that occurs in any of the microservices can be handled better by it. We can also have a smart retry or routing policy based on the error events so that the end-user experiences are not affected.
+- **Cross-cutting Concerns:** Each publicly published microservice must handle concerns such as authentication and SSL. In many situations, those concerns could be handled in a single tier so the internal microservices are simplified and the solutions are cheaper and more reliable. Concerns might be:
+  - SSL
+  - Authentication and authorization
+  - Monitoring, Logging and Tracing
+  - Load balancing
+  - Response caching
+  - Rate limiting and throttling
+  - Retry policies, circuit breaker, and QoS
+  - IP allow-listing/block-listing
+
+<p align="center" style="margin: 50px auto"> 
+    <img style="max-height: 400px" src="../assets/images/api-gateway/azure-gateway.png">
+</p>
 
 ### Drawbacks
 
-- It introduces additional costs (the API Gateway must be developed, deployed, and managed).
-- There is a risk that the API Gateway becomes a development bottleneck.
+- It introduces additional costs (the API Gateway must be developed, deployed, managed and maintained). Developers must update the API Gateway in order to expose each microservice's endpoints (unless the API Gateway is just applying security, logging, and versioning).
+- Additional complexity to the architecture.
+- There is a risk that the API Gateway becomes a development bottleneck (If not scaled out properly). Can lead to a single point of failure if not thought out well.
 - You need a highly matured development team to execute such strategy.
+- An API Gateway can introduce increased response time due to the additional network call. However, this extra call usually has less impact than having a client interface that's too chatty directly calling the internal microservices and this is less impact as compared to the complexity of the problem it tries to solve.
 
-# Popular Implementations
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+# Popular Solutions
 
 <p> 
     <img style="max-height:150px" src="../assets/images/api-gateway/kong-logo.png">
@@ -119,7 +134,11 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
   Heroku in one click.
 - [Master Builds](https://hub.docker.com/r/kong/kong/tags): Docker images for each commit in the `master` branch.
 
----
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 <p style="margin: 50px 0"> 
     <img style="max-height:200px" src="../assets/images/api-gateway/zuul-logo.png">
@@ -145,7 +164,11 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
     <img style="width:90%; max-width:1000px" src="../assets/images/api-gateway/zuul.png">
 </p>
 
----
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 <p> 
     <img style="max-height:150px" src="../assets/images/api-gateway/tyk-logo.png">
@@ -189,7 +212,11 @@ Reverse proxy or gateway routing. The API Gateway offers a reverse proxy to redi
 - [Ubuntu](https://tyk.io/docs/tyk-oss/ce-ubuntu/)
 - [CentOS](https://tyk.io/docs/tyk-oss/ce-centos/)
 
----
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 <p> 
     <img style="max-height:250px; max-width: 250px" src="../assets/images/api-gateway/apisix-logo.svg">
@@ -210,6 +237,8 @@ You can use Apache APISIX to handle traditional north-south traffic, as well as 
 
 You can use Apache APISIX as a traffic entrance to process all business data, including dynamic routing, dynamic upstream, dynamic certificates,
 A/B testing, canary release, blue-green deployment, limit rate, defense against malicious attacks, metrics, monitoring alarms, service observability, service governance, etc.
+
+_Links are not working, you can find a working version in the README.md in their github repository_
 
 - **All platforms**
 
@@ -259,7 +288,7 @@ A/B testing, canary release, blue-green deployment, limit rate, defense against 
   - Authentications: [key-auth](docs/en/latest/plugins/key-auth.md), [JWT](docs/en/latest/plugins/jwt-auth.md), [basic-auth](docs/en/latest/plugins/basic-auth.md), [wolf-rbac](docs/en/latest/plugins/wolf-rbac.md)
   - [IP Whitelist/Blacklist](docs/en/latest/plugins/ip-restriction.md)
   - [Referer Whitelist/Blacklist](docs/en/latest/plugins/referer-restriction.md)
-  - [IdP](docs/en/latest/plugins/openid-connect.md): Support external authentication services, such as Auth0, okta, etc., users can use this to connect to OAuth 2.0 and other authentication methods.
+  - [IdP](docs/en/latest/plugins/openid-connect.md): Support external authentication services, such as Auth0, okta, etc., users can use this to connect to OAuth2.0 and other authentication methods.
   - [Limit-req](docs/en/latest/plugins/limit-req.md)
   - [Limit-count](docs/en/latest/plugins/limit-count.md)
   - [Limit-concurrency](docs/en/latest/plugins/limit-conn.md)
@@ -297,7 +326,11 @@ A/B testing, canary release, blue-green deployment, limit rate, defense against 
 - [Docker](https://hub.docker.com/r/apache/apisix)
 - [Linux](https://github.com/apache/apisix#configure-and-installation/)
 
----
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 <p> 
     <img style="max-height:70px" src="../assets/images/api-gateway/krakend-logo.png">
@@ -371,63 +404,33 @@ Some of the features you get with KrakenD are:
 - [Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/brutale.krakend-ce?tab=Overview)
 - [Linux/OS X](https://www.krakend.io/download/)
 
-## Comparaison
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
-### Kong vs Karkend
+# Choosing the right API Gateway
 
-[read](https://stackoverflow.com/questions/60050154/how-good-is-krakend-compared-to-kong)
+### AuthN Supoort
 
-### Apache APISIX vs. Kong
+**OIDC**
 
-#### Both of them have been covered core features of API gateway
+- [ ] Kong
+  - Official plugin available only for entreprise version: [reference](https://docs.konghq.com/hub/kong-inc/openid-connect/)
+  - Community plugins are outdated ([kong-oidc](https://github.com/nokia/kong-oidc), [kong-oidc-auth](https://github.com/Optum/kong-oidc-auth), [kong-external-oauth](https://github.com/mogui/kong-external-oauth))
+- [ ] Zuul
+- [x] Tyk
+  - [Integrates with OIDC](https://tyk.io/docs/advanced-configuration/integrate/api-auth-mode/open-id-connect/)
 
-| **Features**         | **Apache APISIX** | **KONG** |
-| :------------------- | :---------------- | :------- |
-| **Dynamic upstream** | Yes               | Yes      |
-| **Dynamic router**   | Yes               | Yes      |
-| **Health check**     | Yes               | Yes      |
-| **Dynamic SSL**      | Yes               | Yes      |
-| **L4 and L7 proxy**  | Yes               | Yes      |
-| **Opentracing**      | Yes               | Yes      |
-| **Custom plugin**    | Yes               | Yes      |
-| **REST API**         | Yes               | Yes      |
-| **CLI**              | Yes               | Yes      |
+**OAuth2**
 
-#### The advantages of Apache APISIX
+- [x] Kong
+  - [OAuth2.0 Authentication Plugin](https://docs.konghq.com/hub/kong-inc/oauth2/)
 
-| **Features**                                                    | **Apache APISIX**                                                                                                                                                                        | **Kong**                |
-| :-------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------- |
-| Belongs to                                                      | Apache Software Foundation                                                                                                                                                               | Kong Inc.               |
-| Tech Architecture                                               | Nginx + etcd                                                                                                                                                                             | Nginx + Postgres        |
-| Communication channels                                          | Mail list, Wechat group, QQ group, [GitHub](https://github.com/apache/apisix/issues), [Slack](https://join.slack.com/t/the-asf/shared_invite/zt-nggtva4i-hDCsW1S35MuZ2g_2DgVDGg), meetup | GitHub, Freenode, forum |
-| Single-core CPU, QPS(enable limit-count and Prometheus plugins) | 18000                                                                                                                                                                                    | 1700                    |
-| Latency                                                         | 0.2 ms                                                                                                                                                                                   | 2 ms                    |
-| Dubbo                                                           | Yes                                                                                                                                                                                      | No                      |
-| Configuration rollback                                          | Yes                                                                                                                                                                                      | No                      |
-| Route with TTL                                                  | Yes                                                                                                                                                                                      | No                      |
-| Plug-in hot loading                                             | Yes                                                                                                                                                                                      | No                      |
-| Custom LB and route                                             | Yes                                                                                                                                                                                      | No                      |
-| REST API <--> gRPC transcoding                                  | Yes                                                                                                                                                                                      | No                      |
-| Tengine                                                         | Yes                                                                                                                                                                                      | No                      |
-| MQTT                                                            | Yes                                                                                                                                                                                      | No                      |
-| Configuration effective time                                    | Event-driven, < 1ms                                                                                                                                                                      | polling, 5 seconds      |
-| Dashboard                                                       | Yes                                                                                                                                                                                      | No                      |
-| IdP                                                             | Yes                                                                                                                                                                                      | No                      |
-| Configuration Center HA                                         | Yes                                                                                                                                                                                      | No                      |
-| Speed limit for a specified time window                         | Yes                                                                                                                                                                                      | No                      |
-| Support any Nginx variable as routing condition                 | Yes                                                                                                                                                                                      | No                      |
+### AuthZ (Optional)
 
-Benchmark comparison test [details data](https://gist.github.com/membphis/137db97a4bf64d3653aa42f3e016bd01)
+### SSL
 
----
-
-### Additional resources - bibliography
-
-https://microservices.io/patterns/apigateway.html
-https://microservices.io/patterns/data/api-composition.html
-https://cloud.google.com/api-gateway/docs/about-api-gateway
-https://www.nginx.com/learn/api-gateway/
-https://www.nginx.com/blog/building-microservices-using-an-api-gateway/
-https://docs.microsoft.com/en-us/dotnet/architecture/microservices/architect-microservice-container-applications/direct-client-to-microservice-communication-versus-the-api-gateway-pattern
-https://www.pogsdotnet.com/2018/08/api-gateway-in-nutshell.html
-https://docs.microsoft.com/en-us/azure/architecture/patterns/gateway-aggregation
+- [x] Kong
+  - [ACME Plugin](https://docs.konghq.com/hub/kong-inc/acme/) plugin

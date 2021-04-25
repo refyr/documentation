@@ -1,3 +1,8 @@
-## Sections
+# Table of Contents
 
-### [API Gateway](api-gateway/api-gateway.md)
+- **Services**
+  - **[API Gateway](contents/api-gateway.md)**
+- **Identity Management and Access Control**
+  - **[Authentication and Authorization](contents/iam.md)**
+- **Security**
+  - **[Zero Trust Security](contents/security/zero-trust.md)**
