@@ -1,4 +1,4 @@
-# Identity & Access Management
+# Identity & Access Management (Incomplete)
 
 ### Design Goals
 
@@ -10,7 +10,8 @@
 ### Too long; didn't read
 
 **OAuth2.0** is a standard that provides secure delegated access. That means an application can take actions or access resources from a server on behalf of the user, without them having to share their credentials. It does this by allowing the identity provider (IdP) to issue tokens to third-party applications with the user’s approval.
-**OpenID Connect (OIDC)** is an open standard that organizations use to authenticate users. IdPs use this so that users can sign in to the IdP, and then access other websites and apps without having to log in or share their sign-in information.
+
+**OpenID Connect (OIDC)** is an open standard that organizations use to authenticate users. IdPs use this so that users can sign in to the IdP, and then access other websites and apps without having to log in or share their sign-in information.  
 OpenID Connect is built on the OAuth2.0 protocol and uses an additional JSON Web Token (JWT), called an ID token, to standardize areas that OAuth2.0 leaves up to choice, such as scopes and endpoint discovery. It is specifically focused on user authentication and is widely used to enable user logins on consumer websites and mobile apps.
 
 **Key Points**
@@ -33,7 +34,7 @@ An entity can have multiple identities.
 
 **Authentication vs. Authorization**
 Authentication is the process of confirming the identity of an entity (e.g., a user). Authorization refers to the process of verifying what entities can access, or what actions they
-can perform.
+can perform.  
 An entity can use its identity to gain authorization to perform some action, but that the other way around is not possible (i.e., having authorization doesn‘t mean being authenticated or identified).
 
 **Resource owner**
@@ -49,34 +50,32 @@ An application that makes protected resource requests on behalf of the resource 
 The server that issues access tokens to the client after authenticating the resource owner and obtaining authorization.
 
 **OAuth2.0**
-The OAuth2.0 authorization framework enables a third-party application (Clients) to obtain limited access to an resource server (HTTP service/API), either on behalf of a resource owner (User) by orchestrating an approval interaction between the resource owner and the resource server (HTTP service/API), or by allowing the third-party application to obtain access on its own behalf.
-
+The OAuth2.0 authorization framework enables a third-party application (Clients) to obtain limited access to an resource server (HTTP service/API), either on behalf of a resource owner (User) by orchestrating an approval interaction between the resource owner and the resource server (HTTP service/API), or by allowing the third-party application to obtain access on its own behalf.  
 The important point OAuth makes is that we should never trust any application with unrestricted authentication factors (such as a password). We can never be certain the application will use these keys for our intended purpose. Instead, we should only trust applications with tokens having limited capability and a short lifespan.
-OAuth was created specifically to handle delegated authorization scenarios, like when you let a random application post something on Facebook as if it was you. However, it got so much traction that developers started using it to do things it was not created to do, like handling end-user authentication, which resulted in security problems like the Confused Deputy attack. This led to an effort that resulted in _**OpenID Connect, a protocol that extends OAuth2.0**_ to address authentication.
-
+OAuth was created specifically to handle delegated authorization scenarios, like when you let a random application post something on Facebook as if it was you. However, it got so much traction that developers started using it to do things it was not created to do, like handling end-user authentication, which resulted in security problems like the Confused Deputy attack. This led to an effort that resulted in _**OpenID Connect, a protocol that extends OAuth2.0**_ to address authentication.  
 In order to grant an application the permission to do an action (access a resource) on your behalf you are redirected to the authorization server, you perform some action there, and then the application gets an artifact related to you. The biggest difference is that, in a pure OAuth 2.0 scenario, the result will be an artifact that grants delegated authorization instead of an artifact that contains personal attributes about you.
 
 **OpenID Connect**
 OICD is a protocol that enables different types of applications to support authentication and identity management in a secure, centralized, and standardized way. Apps based on the OpenID Connect protocol rely on identity providers to handle authentication processes for them securely and to verify the identities (i.e., personal attributes) of their users.
 _**OpenID Connect doesn‘t employ identity provider in it.**_ Instead, the protocol uses Authorization Server to refer to the entity in charge of authenticating end-users.
-By using OpenID Connect, instead of dealing with the credentials of these users, your app would offload the authentication process to an identity provider (for example, Google, Microsoft, or Auth0). _**How these identity providers handle the authentication process is out of the scope of OpenID Connect**_. That is, from the perspective of the protocol, identity providers are free to decide if they handle user authentication through a set of credentials (e.g., username and password), if they enhance the security of the process by using features like multi-factor authentication, or even if they relay this process to other identity providers and other protocols. What OIDC defines is how identity providers and applications interact to establish end-user authentication in a secure way.
+By using OpenID Connect, instead of dealing with the credentials of these users, your app would offload the authentication process to an identity provider (for example, Google, Microsoft, or Auth0). _**How these identity providers handle the authentication process is out of the scope of OpenID Connect**_. That is, from the perspective of the protocol, identity providers are free to decide if they handle user authentication through a set of credentials (e.g., username and password), if they enhance the security of the process by using features like multi-factor authentication, or even if they relay this process to other identity providers and other protocols. What OIDC defines is how identity providers and applications interact to establish end-user authentication in a secure way.  
 OpenID Connect take advantage of digitally signed tokens to carry enduser personal attributes around. These digital signatures enable third-party applications to confirm the veracity of the information on the fly (i.e., without having to issue yet another request to the identity provider to check the data).
 
 ### When should OpenID Connect be used
 
-OpenID Connect can be used to enable your users to reuse their accounts on an identity provider. Instead of asking users to create yet another account, you could take advantage of OIDC to integrate with an identity provider like Google or Microsoft to let them reuse existing accounts.
-Another scenario where OpenID Connect can be useful is when the protocol is used to create a hub of identity providers. In this scenario, instead of making your application communicate with multiple providers, you can make it connect to a single one that works as a hub for the others. It is much easier to support a single identity provider that acts as a hub than to support each one of them separately.
+**OpenID Connect** can be used to enable your users to reuse their accounts on an identity provider. Instead of asking users to create yet another account, you could take advantage of OIDC to integrate with an identity provider like Google or Microsoft to let them reuse existing accounts.  
+Another scenario where OpenID Connect can be useful is when the protocol is used to create a hub of identity providers. In this scenario, instead of making your application communicate with multiple providers, you can make it connect to a single one that works as a hub for the others. It is much easier to support a single identity provider that acts as a hub than to support each one of them separately.  
 The third scenario where OpenID Connect can be really helpful is where it works as a proxy for other protocols. For example, you can make an OpenID Connect identity provider work as a proxy for a more restrictive protocol like SAML. The beauty here is that, by using this approach, you can make a resourceconstrained device integrate with a SAML identity provider through OpenID Connect.
 
 ### Discussions
 
-Q: Why would one care about an authentication protocol?
+Q: Why would one care about an authentication protocol?  
 A: because we want to solve identity management in a secure and interoperable way.
 
-Q: Why not implement our own solution?
+Q: Why not implement our own solution?  
 A: Building your own solution is hard, time consuming and not nearly as good.
 
-Q: Why not AuthO?
+Q: Why not AuthO?  
 A: Save money in the long run. Auth0 starts at 23 USD/month for 1.000 users.
 
 ### Implementations

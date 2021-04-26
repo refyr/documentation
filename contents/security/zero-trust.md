@@ -1,4 +1,4 @@
-# Zero Trust Security
+# Zero Trust Security (Incomplete)
 
 **Too long; didn't read**
 Zero Trust is a security concept centered on the belief that organizations should not automatically trust anything inside or outside its security perimeters and instead must digitally verify anything and everything trying to connect to its systems before granting access.

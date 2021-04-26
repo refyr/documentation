@@ -1,4 +1,4 @@
-# API Gateway (Backends for Frontends)
+# API Gateway (Backends for Frontends) (Incomplete)
 
 # Introduction
 
@@ -416,21 +416,23 @@ Some of the features you get with KrakenD are:
 
 **OIDC**
 
-- [ ] Kong
+- [ ] &nbsp; Kong
   - Official plugin available only for entreprise version: [reference](https://docs.konghq.com/hub/kong-inc/openid-connect/)
   - Community plugins are outdated ([kong-oidc](https://github.com/nokia/kong-oidc), [kong-oidc-auth](https://github.com/Optum/kong-oidc-auth), [kong-external-oauth](https://github.com/mogui/kong-external-oauth))
-- [ ] Zuul
-- [x] Tyk
+- [ ] &nbsp; Zuul
+- [x] &nbsp; Tyk
   - [Integrates with OIDC](https://tyk.io/docs/advanced-configuration/integrate/api-auth-mode/open-id-connect/)
 
 **OAuth2**
 
-- [x] Kong
+- [x] &nbsp; Kong
   - [OAuth2.0 Authentication Plugin](https://docs.konghq.com/hub/kong-inc/oauth2/)
 
 ### AuthZ (Optional)
 
+Coming soon..
+
 ### SSL
 
-- [x] Kong
+- [x] &nbsp; Kong
   - [ACME Plugin](https://docs.konghq.com/hub/kong-inc/acme/) plugin
